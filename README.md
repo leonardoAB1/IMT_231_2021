@@ -9,7 +9,15 @@ El contenido cubierto incluye:
 * Cuadrículas
 * Colas
 * Pilas
+* Conjuntos
+* Diccionarios
+* Árboles
+    * Árboles binarios
+    * Árboles autobalanceados
+* Grafos
+
+
 
 1. Algoritmos
-1. Algoritmos de búsqueda
-1. Algoritmos de orden
+    1. Algoritmos de búsqueda
+    1. Algoritmos de orden
