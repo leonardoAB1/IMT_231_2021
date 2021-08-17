@@ -56,7 +56,7 @@ class _ArrayIterator:
         
 #https://docs.python.org/3.9/library/array.html#module-array 
   
-from array import array
+#from array import array
 
-arr=array("u", "abcd")
-arr2=array("u", [0,1,2,3,4])
+#arr=array("u", "abcd")
+#arr2=array("u", [0,1,2,3,4])
