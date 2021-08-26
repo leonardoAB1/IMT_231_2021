@@ -31,10 +31,10 @@ class Matrix:
                 self[fila, columna] *= escalar
 
     def transpose(self):
-        newMatrix=Matrix(self.numCols, self.numRows)
-        for row in range(self.numRows):
-            for column in range(self.numCols):
-                newMatrix[column][row]=self[row][column]
+        newMatrix=Matrix(self.numCols(), self.numRows())
+        for row in range(self.numRows()):
+            for column in range(self.numCols()):
+                newMatrix[column, row]=self[row,column]
         return newMatrix
 
     def __add__(self, rhsMatrix):
