@@ -41,9 +41,6 @@ class Set:
         for element in setB:
             if element in self:
                 newSet._elements.append(element)
-        for element in self._elements:
-            if element in setB:
-                newSet._elements.append(element)
         return newSet
     
     def difference(self, setB):
