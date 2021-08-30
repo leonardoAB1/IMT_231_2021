@@ -69,7 +69,7 @@ class _SetIterator:
     
     def __next__(self):
         if self._iActual<len(self._setRef):
-            element=self.__arregloRef[self._iActual]
+            element=self._setRef[self._iActual]
             self._iActual+=1
             return element
         else:

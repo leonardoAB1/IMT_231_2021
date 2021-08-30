@@ -17,7 +17,7 @@ class MultiArray:
         return len(self._dins)
     
     def length(self, dim):
-        assert dim >=1 and dim < len(self.dims), \
+        assert dim >=1 and dim < len(self.dins), \
             "Componente de dimensión fuera de rango"
         return self._dims[dim-1]
     
@@ -25,13 +25,13 @@ class MultiArray:
         self._elements.clear(v)
         
     def __getitem__(self, nxTuple):
-        assert len(nxTuple) == len(self.dims()), "Numero inválido de subindices"
+        assert len(nxTuple) == len(self.dins()), "Numero inválido de subindices"
         index = self._compute_index(nxTuple)
         assert index is not None, "Subindice fuera de rango"
         return self._elements[index]
     
     def __setitem__(self, nxTuple, v):
-        assert len(nxTuple) == len(self.dims()), "Numero inválido de subindices"
+        assert len(nxTuple) == len(self.dins()), "Numero inválido de subindices"
         index = self._compute_index(nxTuple)
         assert index is not None, "Subindice fuera de rango"
         self._elements[index] = v
@@ -46,8 +46,8 @@ class MultiArray:
         return offset
     
     def _compute_factors(self):
-        for i in len(self._factors):
-            factor = 1
+        factor=1
+        for i in range(len(self._factors)):
             factor *= _dins[i+1]
             self._factors[i]=factor
     
