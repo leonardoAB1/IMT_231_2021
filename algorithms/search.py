@@ -1,3 +1,4 @@
+"Aislar elementos de una colección que coincidan con un criterio de búsqueda."
 def linearSearch(collection, objective):
     n = len(collection)
     for i in range(n):

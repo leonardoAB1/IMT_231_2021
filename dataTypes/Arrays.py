@@ -12,7 +12,7 @@ class Array:
         return self._n
 
     def __getitem__(self, i):
-        assert i >= 0 and i < len(self)
+        assert i >= 0 and i < len(self), "Index out of range"
         return self._elementos[i]
 
     def __setitem__(self, i, v):
