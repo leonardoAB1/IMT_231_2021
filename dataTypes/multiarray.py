@@ -42,14 +42,14 @@ class MultiArray:
             if nxTuple[j] < 0 or nxTuple[j] >=self._dims[j]:
                 return None
             else:
-                offset += nxTuple[j] *self._factores[j]
+                offset += nxTuple[j] *self._factors[j]
         return offset
     
     def _compute_factors(self):
         factor=1
         for i in range(len(self._factors)):
-            try:
-                factor *= self._dims[i+1]
-            except IndexError: pass
-            self._factors[i]=factor
+            previous_factor=factor
+            for j in range(dims()):
+                factor *= self._dims[j]
+            self._factors[i]=factor/previous_factor
     
