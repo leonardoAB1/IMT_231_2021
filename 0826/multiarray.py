@@ -1,6 +1,6 @@
 from Arrays import Array
 
-class MultiArray:
+class MultiArray: # MultiArray(10, 5, 5, 2)
     def __init__(self, *dims):
         assert len(dims) > 1, "El arreglo debe tener 2 o más dimensiones"
         self._dims = dims
@@ -26,13 +26,13 @@ class MultiArray:
         self._elementos.clear(v)
     
     def __getitem__(self, nxTuple):
-        assert len(nxTuple) == len(self.dims()), "Número inválido de subíndices"
+        assert len(nxTuple) == self.dims(), "Número inválido de subíndices"
         index = self._computar_indice(nxTuple)
         assert index is not None, "Subíndice fuera de rango"
         return self._elementos[index]
 
     def __setitem__(self, nxTuple, v):
-        assert len(nxTuple) == len(self.dims()), "Número inválido de subíndices"
+        assert len(nxTuple) == self.dims(), "Número inválido de subíndices"
         index = self._computar_indice(nxTuple)
         assert index is not None, "Subíndice fuera de rango"
         self._elementos[index] = v
@@ -49,4 +49,13 @@ class MultiArray:
 
 
     def _computar_factores(self):
-        pass
+        for j in range(self.dims()):
+            self._factores[j] = 1
+            for k in range(j+1, len(self._dims)):
+                self._factores[j] *= self._dims[k]
+
+
+arr = MultiArray(10, 5, 5, 2)
+arr[8, 2, 3, 0] = 100
+arr[7, 1, 4, 1] = 200
+print(arr[8, 2, 3, 0])
