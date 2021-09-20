@@ -46,10 +46,14 @@ class MultiArray:
         return offset
     
     def _compute_factors(self):
-        factor=1
-        for i in range(len(self._factors)):
-            previous_factor=factor
-            for j in range(dims()):
-                factor *= self._dims[j]
-            self._factors[i]=factor/previous_factor
-    
+        for j in range(len(self._dims)):
+            self._factors[j]=1
+            for k in range(j+1, len(self._dims)):
+                self._factors[j] *= self._dims[k]
+                
+                
+if __name__=="__main__":
+    arr=MultiArray(10, 5, 5, 2)
+    arr[8, 2, 3, 0]= 100
+    arr[7, 1, 4, 1]= 200
+    print(arr[8, 2, 3, 0])
