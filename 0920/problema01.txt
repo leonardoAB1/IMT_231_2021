@@ -8,10 +8,10 @@ que devuelven.
 guardar un conjunto de pares de datos en una disposicion de 
 llave:valor. Donde la llave es un identificador unico y 
 el valor es el contenido identificado o guardado.
-En python fin de garantizar que la llave sea unica, 
+En python, a fin de garantizar que la llave sea unica, 
 las llaves deben ser hasheables, es decir, deben de ser inmutables.
-Como todo la mayoria de los conjuntos un diccionario 
-es iterable y por lo tanto se implemnta en el mismo el patron iterador.
+Como la mayoria de los conjuntos, un diccionario 
+es iterable y por lo tanto se implementa en el mismo el patron iterador.
 
 Entre los metodos de este tipo de dato abstracto, encontramos:
     *iterator: No acepta argumento,
@@ -24,5 +24,5 @@ Entre los metodos de este tipo de dato abstracto, encontramos:
         en caso de que la llave se encuentre en el mapa el par llave:valor se remueve del mapa,
         sea el caso en el que la llave no se encuentra en el mapa entonces se levanta una excepcion.
     *len, size o equivalentes: No acepta algumento y retorn aun entero,
-        es decir, retorna el nuemro de pares llave:valor es el mapa.
+        es decir, retorna el nuemro de pares llave:valor del mapa.
         
