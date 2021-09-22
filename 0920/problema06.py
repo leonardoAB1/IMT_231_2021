@@ -1,4 +1,5 @@
 class Set:
+    """Complete el tipo de dato Set implementado en clase, implementado los métodos intersect() y difference()."""
     def __init__(self):
         self._elements=list()
         
@@ -12,7 +13,7 @@ class Set:
         if e not in self:
             self._elements.append(e)
             
-    def remove(self, e):
+    def remove(self, e): 
         assert e in self, "El elemento debe pertenecer al conjunto"
         self._elements.remove(e)
         

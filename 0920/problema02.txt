@@ -1,0 +1,29 @@
+Problema 2
+Defina en sus propias palabras qué es un set y
+mencione tres métodos comúnmente encontrados en sets, 
+explicando los argumentos que aceptan y los tipos de datos 
+que devuelven.
+
+    Un  set es una colección que permite guardar valores unicos,
+independientemente del orden en una. Entre sus caracteristicas se descata la
+capacidad de los sets de realizar operaciones logicas de conjuntos matematicos, 
+como lo son la diferencia, igualdad, unión e intersección.
+
+A continuacion algunos metodos de sets para un setA:
+    * igualdad(setB):
+        Acepta otro Set, determina si los sets son iguales y retorna un booleano.
+    * union(setB):
+        Acepta otro Set y retorna un nuevo Set que es la union del setA 
+        y el setB. El nuevo set contiene todos los elementos de setA
+        mas los elementos del setB que no estaban en el setA. 
+        Ninguno de los Sets involucrados es modificado.
+    * intersección(setB):
+        Acepta otro Set y retorna un nuevo Set que es intersección del setA 
+        y el setB. El nuevo set contiene solo los elementos que pertenecen a ambos,
+        tanto al SetA como al  SetB.
+        Ninguno de los Sets involucrados es modificado.
+    * diferencia(setB):
+        Acepta otro Set y retorna un nuevo Set que es diferencia del setA 
+        y el setB. El nuevo set contiene solo los elementos del setA 
+        que no pertenecen al setB.
+        Ninguno de los Sets involucrados es modificado.

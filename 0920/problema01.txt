@@ -1,0 +1,28 @@
+Problema 1
+Defina en sus propias palabras qué es un diccionario y 
+mencione tres métodos comúnmente encontrados en diccionarios,
+explicando los argumentos que aceptan y los tipos de datos 
+que devuelven.
+
+    Un mapa o diccionario es una colección que permite 
+guardar un conjunto de pares de datos en una disposicion de 
+llave:valor. Donde la llave es un identificador unico y 
+el valor es el contenido identificado o guardado.
+En python fin de garantizar que la llave sea unica, 
+las llaves deben ser hasheables, es decir, deben de ser inmutables.
+Como todo la mayoria de los conjuntos un diccionario 
+es iterable y por lo tanto se implemnta en el mismo el patron iterador.
+
+Entre los metodos de este tipo de dato abstracto, encontramos:
+    *iterator: No acepta argumento,
+         crea y retorna un iterador que puede ser usado para iterar sobre las llaves el mapa.
+    *contains: Acepta una llave, determina si se encuentra en el mapa y retorna aun booleano.
+    *add: Acepta una llave y un valor como argumento y retorna un booleano,
+        agrega un nuevo par llave:valor si la llave no se encuentra en el mapa y retorna True,
+        reemplaza el valor identificado con esa llave en caso de que si se encuentre y retorna False.
+    *remove: Acepta una llave como argumento y no retorna valor alguno(rutina),
+        en caso de que la llave se encuentre en el mapa el par llave:valor se remueve del mapa,
+        sea el caso en el que la llave no se encuentra en el mapa entonces se levanta una excepcion.
+    *len, size o equivalentes: No acepta algumento y retorn aun entero,
+        es decir, retorna el nuemro de pares llave:valor es el mapa.
+        
