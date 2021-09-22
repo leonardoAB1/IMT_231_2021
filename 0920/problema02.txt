@@ -5,7 +5,7 @@ explicando los argumentos que aceptan y los tipos de datos
 que devuelven.
 
     Un  set es una colección que permite guardar valores unicos,
-independientemente del orden. Entre sus caracteristicas se descata la
+independientemente del orden; Entre sus caracteristicas se descata la
 capacidad de los sets de realizar operaciones logicas de conjuntos matematicos, 
 como lo son la diferencia, igualdad, unión e intersección.
 

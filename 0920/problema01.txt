@@ -23,6 +23,6 @@ Entre los metodos de este tipo de dato abstracto, encontramos:
     *remove: Acepta una llave como argumento y no retorna valor alguno(rutina),
         en caso de que la llave se encuentre en el mapa el par llave:valor se remueve del mapa,
         sea el caso en el que la llave no se encuentra en el mapa entonces se levanta una excepcion.
-    *len, size o equivalentes: No acepta algumento y retorn aun entero,
+    *len, size o equivalentes: No acepta algumento y retorna aun entero,
         es decir, retorna el nuemro de pares llave:valor del mapa.
         
