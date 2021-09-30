@@ -60,13 +60,12 @@ class Bag:
         return current_node.data
 
     def __iter__(self):
-        return _BagIterator(self._elements)
+        return _BagIterator(self._head)
 
     #   traversal O(n)
 
 class _BagIterator:
     def __init__(self, head):
-        self._bagElements = collection
         self._current_node = head
 
     def __iter__(self):

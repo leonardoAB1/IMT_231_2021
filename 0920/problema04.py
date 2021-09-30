@@ -22,11 +22,11 @@ class Array:
     def __len__(self):
         return self._n
 
-    def __getitem__(self, i):
+    def ____getitem____(self, i):
         assert i >= 0 and i < len(self), "Index out of range"
         return self._elements[i]
 
-    def __setitem__(self, i, v):
+    def ____setitem____(self, i, v):
         assert i >= 0 and i < len(self)
         self._elements[i] = v
 
@@ -77,8 +77,8 @@ class Vector():
     [44,8,3,4,7,101,None,None], elements:6, capacity:8
     >>> print(f"{A}; Where is 3?:Index number {A.indexOf(3)}")
     [44,8,3,4,7,101,None,None]; Where is 3?:Index number 2
-    >>> print(f"{A}; Does vector contains 5?:{A.contains(5)}")
-    [44,8,3,4,7,101,None,None]; Does vector contains 5?:False
+    >>> print(f"{A}; Does vector __contains__ 5?:{A.__contains__(5)}")
+    [44,8,3,4,7,101,None,None]; Does vector __contains__ 5?:False
     >>> print(f"{A.remove(0)} removed")
     44 removed
     >>> print(f"{A}, elements:{A._elements}, capacity:{A._capacity}")
@@ -116,7 +116,7 @@ class Vector():
         "Retorna el número de elementos contenidos en el vector."
         return self._elements
 
-    def contains(self, item):
+    def __contains__(self, item):
         "Determina si el argumento dado está contenido en el vector."
         n = self.length()
         for i in range(n):
@@ -124,14 +124,14 @@ class Vector():
                 return True
         return False
 
-    def getitem(self, index):
+    def __getitem__(self, index):
         """
         Retorna el valor almacenado en el elemento especificado por index.
         index debe estar dentro del rango válido."""
         assert index<self._elements, "Index out of range"
         return self._arr[index]
 
-    def setitem(self, index, item):
+    def __setitem__(self, index, item):
         """Modifica el valor almacenado en el elemento especificado por
         index para almacenar item. index debe estar dentro del rango 
         válido, el cual incluye la primera posición después del último 
@@ -194,7 +194,7 @@ class Vector():
     def indexOf(self, item):
         """Retorna el índice del elemento que contenga item. 
         item debe estar en la lista"""
-        assert self.contains(item), "Item not in vector."
+        assert self.__contains__(item), "Item not in vector."
         n = self.length()
         position=0
         while position<=n:
