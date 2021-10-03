@@ -17,6 +17,10 @@ class sparseMatrix:
     >>> Z._rows[2].traversal() 
     3
     6
+    >>> print(Z) 
+    | 1 0 |
+    | 2 5 |
+    | 3 6 |
     """
         
     def __init__(self, nRows, nCols): #O(n)
@@ -52,7 +56,13 @@ class sparseMatrix:
         array_interno = self._rows[row]
         array_interno[column] = value
         
-        
+    def __str__(self):
+        string="| "
+        for i in range(self.numRows()):
+            for j in range(self.numCols()):
+                string+=f"{self[i, j]} "
+            string+="|\n| "
+        return string[:-3]
         
 class linkedList:
     def __init__(self, size):
@@ -118,8 +128,11 @@ class linkedList:
                 pred.next=current.next
         return self._head
 
+    def __iter__(self):
+        return _linkedListIterator(self._head)
 
-class _ListIterator:
+
+class _linkedListIterator:
     def __init__(self, head):
         self._current_node = head
 
