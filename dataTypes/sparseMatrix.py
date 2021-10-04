@@ -1,7 +1,7 @@
         
-class sparseMatrix:
+class SparseMatrix:
     """
-    >>> Z=sparseMatrix(3,2)
+    >>> Z=SparseMatrix(3,2)
     >>> Z[0,0]=1
     >>> Z[1,0]=2
     >>> Z[2,0]=3
