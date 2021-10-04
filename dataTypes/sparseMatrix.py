@@ -128,26 +128,7 @@ class linkedList:
                 pred.next=current.next
         return self._head
 
-    def __iter__(self):
-        return _linkedListIterator(self._head)
-
-
-class _linkedListIterator:
-    def __init__(self, head):
-        self._current_node = head
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self._current_node is None:
-            raise StopIteration()
-        else:
-            item = self._current_node.data
-            self._current_node = _current_node.next
-            return item
-     
-        
+       
 class Node:
     def __init__(self, data):
         self.data=data
