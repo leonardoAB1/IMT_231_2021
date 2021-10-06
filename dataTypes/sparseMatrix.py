@@ -21,15 +21,36 @@ class SparseMatrix:
     | 1 0 |
     | 2 5 |
     | 3 6 |
+    >>> print(Z.transpose())
+    | 1 2 3 |
+    | 0 5 6 |
+    >>> W=SparseMatrix(3,2)
+    >>> W[0,0]=1
+    >>> W[1,0]=1
+    >>> W[2,1]=1
+    >>> print(W) 
+    | 1 0 |
+    | 1 0 |
+    | 0 1 |
+    >>> Y = Z+W
+    >>> print(Y)
+    | 2 0 |
+    | 3 5 |
+    | 3 7 |
+    >>> Y.scaleBy(2)
+    >>> print(Y)
+    | 4 0 |
+    | 6 10 |
+    | 6 14 |
     """
         
     def __init__(self, nRows, nCols): #O(n)
         self._nCols=nCols
         self._nRows=nRows
-        self._rows = linkedList(nRows)
+        self._rows = SparseLinkedList(nRows)
         
         for i in range(nRows):
-            self._rows[i] = linkedList(nCols)
+            self._rows[i] = SparseLinkedList(nCols)
         
     def numCols(self):
         return self._nCols
@@ -63,8 +84,31 @@ class SparseMatrix:
                 string+=f"{self[i, j]} "
             string+="|\n| "
         return string[:-3]
-        
-class linkedList:
+
+    def scaleBy(self, scalar):
+        for row in range(self.numRows()):
+            for column in range(self.numCols()):
+                self[row, column]*=scalar
+                    
+    def transpose(self):
+        newMatrix=SparseMatrix(self.numCols(), self.numRows())
+        for row in range(self.numRows()):
+            for column in range(self.numCols()):
+                newMatrix[column, row]=self[row,column]
+        return newMatrix
+    
+    def __add__(self, rhsMatrix):
+        assert rhsMatrix.numRows() == self.numRows() and \
+            rhsMatrix.numCols() == self.numCols(), \
+                "Dimensiones no compatibles para esta operación"
+        newMatrix = SparseMatrix(self.numRows(), self.numCols())
+        for fila in range(self.numRows()):
+            for columna in range(self.numCols()):
+                newMatrix[fila, columna] = self[fila, columna] + rhsMatrix[fila, columna]
+        return newMatrix
+         
+
+class SparseLinkedList:
     def __init__(self, size):
         self._head=None
         self._size = size
@@ -91,15 +135,18 @@ class linkedList:
         while current_node is not None and current_node.index < index:
             pred = current_node
             current_node = current_node.next
-            
-        new_node = Node(item)
-        new_node.index = index
-        new_node.next = current_node
-        
-        if current_node is self._head:
-            self._head=new_node
-        else:
-            pred.next = new_node
+        #check if item= 0
+        if item==0 and item in self:
+            self.remove(item)
+        else:         
+            new_node = Node(item)
+            new_node.index = index
+            new_node.next = current_node
+            #check head
+            if current_node is self._head:
+                self._head=new_node
+            else:
+                pred.next = new_node
     
     def __contains__(self, item): #O(n)
         current=self._head
@@ -128,7 +175,7 @@ class linkedList:
                 pred.next=current.next
         return self._head
 
-       
+
 class Node:
     def __init__(self, data):
         self.data=data
