@@ -6,6 +6,13 @@ class Laberinto:
     VISITADO = "x"
     SIN_SALIDA = "o"
 
+    ARRIBA = (-1, 0)
+    ABAJO = (1, 0)
+    DERECHA = (0, 1)
+    IZQUIERDA = (0, -1)
+
+    ACCIONES = {ARRIBA, DERECHA, ABAJO, IZQUIERDA}
+
     def __init__(self, numRows, numCols):
         self._laberinto = Array2D(numRows, numCols)
         self._entrada = None
