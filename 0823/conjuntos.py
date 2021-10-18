@@ -37,10 +37,18 @@ class Set:
         return nuevoSet
 
     def intersect(self, setB):
-        pass
+        nuevoSet = Set()
+        for elemento in self:
+            if elemento in setB:
+                nuevoSet._elementos.append(elemento)
+        return nuevoSet
 
     def difference(self, setB):
-        pass
+        nuevoSet = Set()
+        for elemento in self:
+            if elemento not in setB:
+                nuevoSet._elementos.append(elemento)
+        return nuevoSet
 
     def __iter__(self):
         return _SetIterator(self._elementos)
