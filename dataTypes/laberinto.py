@@ -91,13 +91,11 @@ class Laberinto:
             #       SI NO HAY DIRECCION VALIDA, MARCAR COMO SIN SALIDA, HACER POP DEL STACK Y VOLVER A LA POSICION PREVIA
                     elif  direccion==self.ACCIONES[-1]:
                         self._marcarSinSalida(posicion.row, posicion.col)
-                        #EN CASO DE SEGUIR EN EL INICIO TRAS PROBAR TODAS LAS OPCIONES, NO HAY SOLUCIÓN
-                        if len(trayectoria)==1:
-                            return False
                         posicion=trayectoria.pop()
 
             #   SI TRAS PROBAR LOS CUATRO LADOS SE VUELVE A LA POSICION INICIAL, NO HAY SALIDA
                 if posicion==self._entrada:
+                    laberinto.reset()
                     return False
                 
         self._marcarTrayectoria(posicion.row, posicion.col)
@@ -157,3 +155,44 @@ class _PosicionCelda:
    def __init__(self, row, col):
        self.row=row
        self.col=col
+       
+
+def construirLaberinto(archivo):
+    contenido = open(archivo, "r")
+
+    nrows, ncols = leerPares(contenido)
+    laberinto = Laberinto(nrows, ncols)
+
+    row, col = leerPares(contenido)
+    laberinto.crearEntrada(row, col)
+    row, col = leerPares(contenido)
+    laberinto.crearSalida(row, col)
+
+    for row in range(nrows):
+        linea = contenido.readline()
+        for col in range(len(linea)):
+            if linea[col] == "*":
+                laberinto.crearPared(row, col)
+    
+    contenido.close()
+    return laberinto
+
+
+def leerPares(archivo):
+    linea = archivo.readline()
+    valR, valC = linea.split()
+    return int(valR), int(valC)
+
+
+if __name__=="__main__":
+    laberinto = construirLaberinto("laberinto.txt")
+    print("Resolver el siguiente laberinto:")
+    laberinto.dibujar()
+    if laberinto.encontrarTrayectoria():
+        print("Trayectoria encontrada:")
+        laberinto.dibujar()
+    else:
+        print("Trayectoria no encontrada")
+    laberinto.reset()
+    print("Reset Laberinto:")
+    laberinto.dibujar()
