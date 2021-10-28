@@ -46,3 +46,16 @@ def binarySearch(collection, objective):
         else:
             inferior = medio+1                      #O(1)
     return False
+
+#Binary Search Recursive
+def recBinarySearch(objetivo, secuencia, inferior, superior):
+    if inferior>superior:   #caso base
+        return False
+    else:
+        medio=(inferior+superior)//2
+        if secuencia[medio]==objetivo:
+            return True     #caso base 2
+        elif objetivo<secuencia[medio]: #caso recursivo 1
+            return recBinatySearch(objetivo, secuencia, inferior, medio-1)
+        elif objetivo>secuencia[medio]: #caso recursivo 2
+            return recBinarySearch(objetivo, secuencia, medio+1, superior)
