@@ -1,4 +1,4 @@
-class Maps:
+class Map:
     def __init__(self):
         self._listEntries=list()
         
