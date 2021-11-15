@@ -98,7 +98,7 @@ class HashMap:
     def remove(self, key): #1 Implementar metodo remove
         pass
     
-    def __iter__(self): #2 Implementar metodo remove
+    def __iter__(self): #2 Implementar iterador
         pass
         
     #3. Modificar la  implmentación para usar sondeo lineal modificado en lugar de double hashing    
