@@ -1,3 +1,5 @@
+from Arrays import Array
+
 def unirSubgruposOrdenados(coleccion, izquierda, derecha, fin, array_tmp):
     a = izquierda
     b = derecha
@@ -26,7 +28,7 @@ def unirSubgruposOrdenados(coleccion, izquierda, derecha, fin, array_tmp):
     for i in range(fin - izquierda):
         coleccion[izquierda + i] = array_tmp[i]
 
-def mergeSort(coleccion, inicio, fin, array_tmp):
+def mergeSortRecursivo(coleccion, inicio, fin, array_tmp):
     # caso base
     if inicio == fin:
         return
@@ -35,14 +37,21 @@ def mergeSort(coleccion, inicio, fin, array_tmp):
     else:
         medio = (inicio + fin) // 2
 
-        mergeSort(coleccion, inicio, medio, array_tmp)
-        mergeSort(coleccion, medio + 1, fin, array_tmp)
+        mergeSortRecursivo(coleccion, inicio, medio, array_tmp)
+        mergeSortRecursivo(coleccion, medio + 1, fin, array_tmp)
 
         unirSubgruposOrdenados(coleccion, inicio, medio + 1, fin + 1, array_tmp)
 
-from Arrays import Array
+def mergeSort(coleccion):
+    array_ordenado = Array(len(coleccion))
+    mergeSortRecursivo(coleccion, 0, len(coleccion) - 1, array_ordenado)
+    return array_ordenado
+
+
 
 lista = [10, 23, 51, 18, 4, 31, 13, 5]
-array_ordenado = Array(len(lista))
 
-mergeSort(lista, 0, len(lista) - 1, array_ordenado)
+lista_ordenada = mergeSort(lista)
+
+for i in lista_ordenada:
+    print(i)
