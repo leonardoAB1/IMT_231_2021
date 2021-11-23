@@ -27,20 +27,20 @@ def unirSubgruposOrdenados(coleccion, izquierda, derecha, fin, array_tmp):
 
     for i in range(fin - izquierda):
         coleccion[izquierda + i] = array_tmp[i]
-
-def mergeSortRecursivo(coleccion, inicio, fin, array_tmp):
+#                         n             m
+def mergeSortRecursivo(coleccion, inicio, fin, array_tmp): # O(n log n)
     # caso base
     if inicio == fin:
-        return
+        return # O(1)
 
     # caso recursivo
     else:
-        medio = (inicio + fin) // 2
+        medio = (inicio + fin) // 2 # O(1)
 
-        mergeSortRecursivo(coleccion, inicio, medio, array_tmp)
+        mergeSortRecursivo(coleccion, inicio, medio, array_tmp) # O(log n)
         mergeSortRecursivo(coleccion, medio + 1, fin, array_tmp)
 
-        unirSubgruposOrdenados(coleccion, inicio, medio + 1, fin + 1, array_tmp)
+        unirSubgruposOrdenados(coleccion, inicio, medio + 1, fin + 1, array_tmp) # O(n)
 
 def mergeSort(coleccion):
     array_ordenado = Array(len(coleccion))
