@@ -1,6 +1,6 @@
 # hashable= int, float, str, tuple, None
 # no hasheable= list, dict, set
-#Hash map que usa doble hash
+#Hash map que usa modified linear proving
 from Arrays import Array
 
 class _MapEntry:
@@ -33,13 +33,13 @@ class HashMap:
     #F          _MapEntry           compare key x
     
     def _findPosition(self, key, insert): #insert:bool-> to insert or not to?
-        posicion=self._hash1(key)
-        paso=self._hash2(key) #posicion nueva en función de la llave, en mod linear proving está en función de la posicion original
-        
+        i=0
+        posicion=self._hash(key)
+         #posicion nueva en función de la llave, en mod linear proving está en función de la posicion original
         M=len(self._tabla)
-        #opcion mas probable
 
         while self._tabla[posicion] is not self.VACIO:
+            paso=self.proving_func(posicion, i)
             if insert\
                 and self._tabla[posicion] is self.PREV_OCUPADO:
                 return posicion #INSERTAR Y PREV_OCUPADO
@@ -49,7 +49,8 @@ class HashMap:
             else:
                 #Modified Linear Probing
                 posicion=(posicion+paso)%M #NO INSERTAR Y NO PREV_OCUPADO
-        
+            i+=1
+            
         if insert and self._tabla[posicion] is self.VACIO:
             return posicion #INSERTAR Y VACIO
         
@@ -70,11 +71,12 @@ class HashMap:
             return True
         
         
-    def _hash1(self, key):
+    def _hash(self, key):
         return abs(hash(key)%len(self._tabla))
     
-    def _hash2(self, key): #en mod linear proving se llamará "función de sondeo" f(self, original_slot)
-        return 1+abs(hash(key))%(len(self._tabla)-2)
+    def proving_func(self, posicion, i): #en mod linear proving se llamará "función de sondeo" f(self, original_slot)
+        c=2
+        return (posicion+i*c)%len(self._tabla)
     
     def _rehash(self):
         tabla_original=self._tabla
@@ -103,7 +105,7 @@ class HashMap:
     def __iter__(self): #2 Implementar iterador
         return _HashMapIterator(self._tabla)
         
-    #3. Modificar la  implmentación para usar sondeo lineal modificado en lugar de double hashing    
+    #3. Modificar la  implmentación para usar sondeo lineal modificado en lugar de double hashing : Done
         
 class _HashMapIterator:
     def __init__(self, mapa):
