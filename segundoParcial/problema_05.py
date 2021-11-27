@@ -5,6 +5,8 @@ def compute_GCD(num_1:int, num_2:int):
     """
     >>> print(compute_GCD(120, 360))
     120
+    >>> print(compute_GCD(360, 120))
+    120
     >>> print(compute_GCD(5, 0))
     5
     >>> print(compute_GCD(12, 5))

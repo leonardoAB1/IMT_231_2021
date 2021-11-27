@@ -1,6 +1,8 @@
 #Implemente los métodos remove, __iter__ del tipo de dato abstracto HashMap 
 #implementado en clase.
 
+#Nota: La implementacion del metodo __str__ de HashMap hace uso del iterador implementado en HashMap
+
 from Arrays import Array
 
 class _MapEntry:

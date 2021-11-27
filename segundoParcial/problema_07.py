@@ -37,7 +37,7 @@ class Chain(LinkedList):
             pred = current
             current = current.next
 
-        # saltar el node a eliminar
+        # saltar el nodo a eliminar
         if current is not None:
             if current is self._head:
                 self._head = current.next
@@ -98,14 +98,14 @@ class LinkedHashMap:
             False
     
     def _findEntry(self, key):
-        posicion=self._hash1(key)
+        posicion=self._hash(key)
         assert self._tabla[posicion] is not None, "Llave Invalida"
         for entry in self._tabla[posicion]:
             if entry.key==key:
                 return entry
     
     def add(self, key, value):
-        posicion=self._hash1(key)
+        posicion=self._hash(key)
         if self._tabla[posicion] is None:
             self._tabla[posicion]=Chain()
             
@@ -116,7 +116,7 @@ class LinkedHashMap:
             self._tabla[posicion].append(key, value)
             self._conteo+=1
         
-    def _hash1(self, key):
+    def _hash(self, key):
         return abs(hash(key)%len(self._tabla))
     
     def valueOf(self, key):
@@ -125,7 +125,7 @@ class LinkedHashMap:
         return value
         
     def remove(self, key): 
-        posicion=self._hash1(key)
+        posicion=self._hash(key)
         if key in self:
             self._tabla[posicion].remove(key)
     
