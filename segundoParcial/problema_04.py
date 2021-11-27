@@ -187,25 +187,34 @@ class DoublyLinkedList:
             nodo_actual.prev.next = nuevo_nodo
             nodo_actual.prev = nuevo_nodo
             
-    def remove(self, value):#O(n)
-        node_to_remove=self.search(value)#O(n)
-        if self.head is None or node_to_remove is None:#O(1)
+    def remove(self, value):#O(n) en el peor de los casos, O(1) en el mejor
+        #edge case empty list or argument
+        if value is None or self.head is None:#O(1)
             return
+        
         #if node to remove is head
-        if self.head==node_to_remove:#O(1)
-            self.head=node_to_remove.next
+        elif self.head.data==value:#O(1)
+            self.head.next.prev=None
+            self.head=self.head.next
             
         #if node to remove is tail#O(1)
-        elif node_to_remove==self.tail:
-            self.tail=node_to_remove.prev
+        elif self.tail.data==value:
+            self.tail.prev.next=None
+            self.tail=self.tail.prev
             
-        #remove middle node
-        if node_to_remove.next is not None:#O(1)
-            node_to_remove.next.prev=node_to_remove.prev
-            
-        #change prev only if node to delete is not None
-        if node_to_remove.prev is not None:#O(1)
-            node_to_remove.prev.next=node_to_remove.next
+        else:
+            node_to_remove=self.search(value)#O(n)
+            #value not found in list
+            if node_to_remove is None:#O(1)
+                return
+
+            #remove middle node
+            if node_to_remove.next is not None:#O(1)
+                node_to_remove.next.prev=node_to_remove.prev
+                
+            #change prev only if the prev of node to delete is not None
+            if node_to_remove.prev is not None:#O(1)
+                node_to_remove.prev.next=node_to_remove.next
 
 
 if __name__=="__main__":
